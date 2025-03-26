@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Container, Box, Typography, TextField, Button, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
     // Lógica de inicio de sesión
+    navigate('/HomePage');
   };
 
   const handleClickShowPassword = () => {
@@ -20,7 +23,7 @@ const Login = () => {
     <Container maxWidth="sm" sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
       <Box sx={{ p: 3, boxShadow: 3, borderRadius: 2, textAlign: "center", backgroundColor: "#213A62" }}>
         <Typography variant="h3" gutterBottom sx={{ color: "#ffffff"}}>
-          Nombre del proyecto
+          Agente CRM
         </Typography>
         <Typography variant="h5" gutterBottom sx={{ color: "#24B8D2", fontSize: "1.25rem" }}>
           Iniciar Sesión
@@ -109,7 +112,7 @@ const Login = () => {
           <a href="#" style={{ color: "#24B8D2", textDecoration: "none" }}>¿Olvidaste la contraseña?</a>
         </Typography>
         <Typography variant="body2" sx={{ color: "#FFFFFF", mt: 1 }}>
-          ¿No estás registrado?<a href="#" style={{ color: "#24B8D2", textDecoration: "none" }}> Crea una cuenta aquí</a>
+          ¿No estás registrado?<a href="Register" style={{ color: "#24B8D2", textDecoration: "none" }}> Crea una cuenta aquí</a>
         </Typography>
       </Box>
     </Container>
