@@ -57,7 +57,7 @@ export default function VerificationCodePage() {
 
   const handleVerify = () => {
     console.log('Código de verificación:', code.join(''));
-    navigate('/');
+    navigate('/SeleccionarPlan');
   };
 
   return (

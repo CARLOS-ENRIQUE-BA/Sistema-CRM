@@ -14,11 +14,11 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import FolderIcon from '@mui/icons-material/Folder';
 import QuestionAnswerRoundedIcon from '@mui/icons-material/QuestionAnswerRounded';
-import SupportRoundedIcon from '@mui/icons-material/SupportRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import BrightnessAutoRoundedIcon from '@mui/icons-material/BrightnessAutoRounded';
 import AssessmentIcon from '@mui/icons-material/Assessment';
+import CampaignIcon from '@mui/icons-material/Campaign';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import ColorSchemeToggle from './ColorSchemeToggle';
@@ -176,6 +176,19 @@ export default function Sidebar() {
           </ListItem>
 
           <ListItem>
+            <ListItemButton 
+              selected={location.pathname === '/CampaignPage'}
+              onClick={() => navigate('/CampaignPage')}
+              sx={listItemButtonStyle}
+            >
+              <CampaignIcon />
+              <ListItemContent>
+                <Typography level="title-sm">Campañas</Typography>
+              </ListItemContent>
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem>
             <ListItemButton
               selected={location.pathname === '/#messages'}
               onClick={() => navigate('/#')}
@@ -199,19 +212,18 @@ export default function Sidebar() {
             flexGrow: 0,
             '--ListItem-radius': (theme) => theme.vars.radius.sm,
             '--List-gap': '8px',
-            mb: 2,
           }}
         >
           <ListItem>
-            <ListItemButton onClick={() => navigate('/#')}>
-              <SupportRoundedIcon />
-              Soporte
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton onClick={() => navigate('/#')}>
+            <ListItemButton 
+              selected={location.pathname === '/settings'}
+              onClick={() => navigate('/#')}
+              sx={listItemButtonStyle}
+            >
               <SettingsRoundedIcon />
-              Configuración
+              <ListItemContent>
+                <Typography level="title-sm">Configuración</Typography>
+              </ListItemContent>
             </ListItemButton>
           </ListItem>
         </List>
