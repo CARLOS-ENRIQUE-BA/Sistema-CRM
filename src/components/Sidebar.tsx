@@ -18,6 +18,7 @@ import SupportRoundedIcon from '@mui/icons-material/SupportRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import BrightnessAutoRoundedIcon from '@mui/icons-material/BrightnessAutoRounded';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import ColorSchemeToggle from './ColorSchemeToggle';
@@ -27,6 +28,22 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
   
+  const listItemButtonStyle = {
+    '&.Mui-selected': {
+      backgroundColor: '#24B8D2',
+      color: '#213A62',
+      '& svg': {
+        color: '#213A62',
+      },
+      '& .MuiTypography-root': {
+        color: '#213A62',
+      },
+      '&:hover': {
+        backgroundColor: '#1A91B8',
+      },
+    },
+  };
+
   return (
     <Sheet
       className="Sidebar"
@@ -110,6 +127,7 @@ export default function Sidebar() {
             <ListItemButton 
               selected={location.pathname === '/HomePage'} 
               onClick={() => navigate('/HomePage')}
+              sx={listItemButtonStyle}
             >
               <DashboardRoundedIcon />
               <ListItemContent>
@@ -122,6 +140,7 @@ export default function Sidebar() {
             <ListItemButton 
               selected={location.pathname === '/ClientPage'}
               onClick={() => navigate('/ClientPage')}
+              sx={listItemButtonStyle}
             >
               <PeopleAltIcon />
               <ListItemContent>
@@ -134,6 +153,7 @@ export default function Sidebar() {
             <ListItemButton 
               selected={location.pathname === '/#'}
               onClick={() => navigate('/#')}
+              sx={listItemButtonStyle}
             >
               <FolderIcon />
               <ListItemContent>
@@ -143,9 +163,23 @@ export default function Sidebar() {
           </ListItem>
 
           <ListItem>
+            <ListItemButton 
+              selected={location.pathname === '/reports'}
+              onClick={() => navigate('/#')}
+              sx={listItemButtonStyle}
+            >
+              <AssessmentIcon />
+              <ListItemContent>
+                <Typography level="title-sm">Reportes</Typography>
+              </ListItemContent>
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem>
             <ListItemButton
               selected={location.pathname === '/#messages'}
               onClick={() => navigate('/#')}
+              sx={listItemButtonStyle}
             >
               <QuestionAnswerRoundedIcon />
               <ListItemContent>

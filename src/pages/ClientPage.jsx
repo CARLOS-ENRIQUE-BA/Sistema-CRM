@@ -9,7 +9,6 @@ import Sheet from '@mui/joy/Sheet';
 import Input from '@mui/joy/Input';
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
-import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Header from '../components/Header';
@@ -70,34 +69,9 @@ export default function ClientPage() {
             gap: 1,
           }}
         >
-          <Box
-            sx={{
-              display: 'flex',
-              mb: 1,
-              gap: 1,
-              flexDirection: { xs: 'column', sm: 'row' },
-              alignItems: { xs: 'start', sm: 'center' },
-              flexWrap: 'wrap',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Typography level="h2" component="h1">
-              Clientes
-            </Typography>
-            <Button
-              color="primary"
-              startDecorator={<AddIcon />}
-              size="sm"
-              sx={{
-                backgroundColor: '#24B8D2',
-                '&:hover': {
-                  backgroundColor: '#1A91B8',
-                },
-              }}
-            >
-              Agregar Cliente
-            </Button>
-          </Box>
+          <Typography level="h2" component="h1" sx={{ mb: 2 }}>
+            Clientes
+          </Typography>
 
           <Box
             sx={{
