@@ -4,14 +4,12 @@ import Box from '@mui/joy/Box';
 import Chip from '@mui/joy/Chip';
 import Divider from '@mui/joy/Divider';
 import IconButton from '@mui/joy/IconButton';
-import Input from '@mui/joy/Input';
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
 import ListItemButton, { listItemButtonClasses } from '@mui/joy/ListItemButton';
 import ListItemContent from '@mui/joy/ListItemContent';
 import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -20,45 +18,14 @@ import SupportRoundedIcon from '@mui/icons-material/SupportRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import BrightnessAutoRoundedIcon from '@mui/icons-material/BrightnessAutoRounded';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import ColorSchemeToggle from './ColorSchemeToggle';
 import { closeSidebar } from '../utils';
 
-function Toggler({
-  defaultExpanded = false,
-  renderToggle,
-  children,
-}: {
-  defaultExpanded?: boolean;
-  children: React.ReactNode;
-  renderToggle: (params: {
-    open: boolean;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  }) => React.ReactNode;
-}) {
-  const [open, setOpen] = React.useState(defaultExpanded);
-  return (
-    <React.Fragment>
-      {renderToggle({ open, setOpen })}
-      <Box
-        sx={[
-          {
-            display: 'grid',
-            transition: '0.2s ease',
-            '& > *': {
-              overflow: 'hidden',
-            },
-          },
-          open ? { gridTemplateRows: '1fr' } : { gridTemplateRows: '0fr' },
-        ]}
-      >
-        {children}
-      </Box>
-    </React.Fragment>
-  );
-}
-
 export default function Sidebar() {
+  const navigate = useNavigate();
+  const location = useLocation();
   
   return (
     <Sheet
@@ -116,10 +83,9 @@ export default function Sidebar() {
         <IconButton variant="soft" color="primary" size="sm">
           <BrightnessAutoRoundedIcon />
         </IconButton>
-        <Typography level="title-lg">Acme Co.</Typography>
+        <Typography level="title-lg">Agente CRM</Typography>
         <ColorSchemeToggle sx={{ ml: 'auto' }} />
       </Box>
-      <Input size="sm" startDecorator={<SearchRoundedIcon />} placeholder="Search" />
       <Box
         sx={{
           minHeight: 0,
@@ -140,9 +106,11 @@ export default function Sidebar() {
             '--ListItem-radius': (theme) => theme.vars.radius.sm,
           }}
         >
-
           <ListItem>
-            <ListItemButton>
+            <ListItemButton 
+              selected={location.pathname === '/HomePage'} 
+              onClick={() => navigate('/HomePage')}
+            >
               <DashboardRoundedIcon />
               <ListItemContent>
                 <Typography level="title-sm">Dashboard</Typography>
@@ -151,16 +119,22 @@ export default function Sidebar() {
           </ListItem>
 
           <ListItem>
-            <ListItemButton>
+            <ListItemButton 
+              selected={location.pathname === '/ClientPage'}
+              onClick={() => navigate('/ClientPage')}
+            >
               <PeopleAltIcon />
               <ListItemContent>
-                <Typography level="title-sm">Usuarios</Typography>
+                <Typography level="title-sm">Contactos</Typography>
               </ListItemContent>
             </ListItemButton>
           </ListItem>
 
           <ListItem>
-            <ListItemButton selected>
+            <ListItemButton 
+              selected={location.pathname === '/#'}
+              onClick={() => navigate('/#')}
+            >
               <FolderIcon />
               <ListItemContent>
                 <Typography level="title-sm">Proyectos</Typography>
@@ -170,20 +144,18 @@ export default function Sidebar() {
 
           <ListItem>
             <ListItemButton
-              role="menuitem"
-              component="a"
-              href="/joy-ui/getting-started/templates/messages/"
+              selected={location.pathname === '/#messages'}
+              onClick={() => navigate('/#')}
             >
               <QuestionAnswerRoundedIcon />
               <ListItemContent>
-                <Typography level="title-sm">Messages</Typography>
+                <Typography level="title-sm">Mensajes</Typography>
               </ListItemContent>
               <Chip size="sm" color="primary" variant="solid">
                 4
               </Chip>
             </ListItemButton>
           </ListItem>
-
         </List>
 
         <List
@@ -197,15 +169,15 @@ export default function Sidebar() {
           }}
         >
           <ListItem>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate('/#')}>
               <SupportRoundedIcon />
-              Support
+              Soporte
             </ListItemButton>
           </ListItem>
           <ListItem>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate('/#')}>
               <SettingsRoundedIcon />
-              Settings
+              Configuración
             </ListItemButton>
           </ListItem>
         </List>

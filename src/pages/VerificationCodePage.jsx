@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Box, Button, Container, Typography, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 const CodeInput = styled(TextField)({
   width: '60px',
@@ -34,6 +35,7 @@ export default function VerificationCodePage() {
   const [code, setCode] = useState(['', '', '', '']);
   const inputRefs = [useRef(), useRef(), useRef(), useRef()];
   const isCodeComplete = code.every(digit => digit !== '');
+  const navigate = useNavigate();
 
   const handleCodeChange = (index, value) => {
     if (!/^[0-9]*$/.test(value)) return;
@@ -55,6 +57,7 @@ export default function VerificationCodePage() {
 
   const handleVerify = () => {
     console.log('Código de verificación:', code.join(''));
+    navigate('/');
   };
 
   return (

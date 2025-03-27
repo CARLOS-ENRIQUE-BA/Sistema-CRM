@@ -2,21 +2,15 @@ import * as React from 'react';
 import { CssVarsProvider } from '@mui/joy/styles';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import Breadcrumbs from '@mui/joy/Breadcrumbs';
-import Link from '@mui/joy/Link';
 import Typography from '@mui/joy/Typography';
+import Card from '@mui/joy/Card';
+import Link from '@mui/joy/Link';
+import Divider from '@mui/joy/Divider';
 
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import DownloadRoundedIcon from '@mui/icons-material/DownloadRounded';
-
-import Sidebar from '../components/Sidebar';
-import OrderTable from '../components/OrderTable';
-import OrderList from '../components/OrderList';
 import Header from '../components/Header';
+import Sidebar from '../components/Sidebar';
 
-export default function JoyOrderDashboardTemplate() {
+export default function HomePage() {
   return (
     <CssVarsProvider disableTransitionOnChange>
       <CssBaseline />
@@ -42,58 +36,118 @@ export default function JoyOrderDashboardTemplate() {
             gap: 1,
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Breadcrumbs
-              size="sm"
-              aria-label="breadcrumbs"
-              separator={<ChevronRightRoundedIcon fontSize="sm" />}
-              sx={{ pl: 0 }}
-            >
-              <Link
-                underline="none"
-                color="neutral"
-                href="#some-link"
-                aria-label="Home"
-              >
-                <HomeRoundedIcon />
-              </Link>
-              <Link
-                underline="hover"
-                color="neutral"
-                href="#some-link"
-                sx={{ fontSize: 12, fontWeight: 500 }}
-              >
-                Dashboard
-              </Link>
-              <Typography color="primary" sx={{ fontWeight: 500, fontSize: 12 }}>
-                Orders
+          <Typography level="h1" sx={{ mb: 1 }}>
+            Dashboard
+          </Typography>
+          <Typography level="body-md" sx={{ mb: 4, color: 'text.secondary' }}>
+            Bienvenido a su sistema de gestión de clientes y proyectos
+          </Typography>
+
+          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 4 }}>
+            {/* Card Clientes Activos */}
+            <Card sx={{ flex: 1, minWidth: 250 }}>
+              <Typography level="body-sm" sx={{ color: 'text.secondary' }}>
+                Total de clientes con proyectos en curso
               </Typography>
-            </Breadcrumbs>
+              <Typography level="h1" sx={{ mt: 1, mb: 2 }}>
+                24
+              </Typography>
+              <Link href="#" sx={{ color: '#24B8D2' }}>
+                Ver todos los clientes
+              </Link>
+            </Card>
+
+            {/* Card Proyectos Activos */}
+            <Card sx={{ flex: 1, minWidth: 250 }}>
+              <Typography level="body-sm" sx={{ color: 'text.secondary' }}>
+                Total de proyectos en desarrollo
+              </Typography>
+              <Typography level="h1" sx={{ mt: 1, mb: 2 }}>
+                42
+              </Typography>
+              <Link href="#" sx={{ color: '#24B8D2' }}>
+                Ver todos los proyectos
+              </Link>
+            </Card>
+
+            {/* Card Proyectos Completados */}
+            <Card sx={{ flex: 1, minWidth: 250 }}>
+              <Typography level="body-sm" sx={{ color: 'text.secondary' }}>
+                Total de proyectos finalizados este mes
+              </Typography>
+              <Typography level="h1" sx={{ mt: 1, mb: 2 }}>
+                8
+              </Typography>
+              <Link href="#" sx={{ color: '#24B8D2' }}>
+                Ver proyectos completados
+              </Link>
+            </Card>
           </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              mb: 1,
-              gap: 1,
-              flexDirection: { xs: 'column', sm: 'row' },
-              alignItems: { xs: 'start', sm: 'center' },
-              flexWrap: 'wrap',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Typography level="h2" component="h1">
-              Orders
-            </Typography>
-            <Button
-              color="primary"
-              startDecorator={<DownloadRoundedIcon />}
-              size="sm"
-            >
-              Download PDF
-            </Button>
+
+          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+            {/* Sección Clientes Recientes */}
+            <Card sx={{ flex: 1, minWidth: 300 }}>
+              <Typography level="h4" sx={{ mb: 2 }}>
+                Clientes Recientes
+              </Typography>
+              <Typography level="body-sm" sx={{ mb: 2, color: 'text.secondary' }}>
+                Últimos clientes agregados al sistema
+              </Typography>
+              
+              {[
+                { name: 'Empresa tecnologica S.A.', time: 'Hace 2 días' },
+                { name: 'Consultoria Innovación', time: 'Hace 3 días' },
+                { name: 'KennStudio', time: 'Hace 1 semana' },
+              ].map((client, index) => (
+                <React.Fragment key={index}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: 1 }}>
+                    <Box>
+                      <Typography level="body-md">{client.name}</Typography>
+                      <Typography level="body-sm" sx={{ color: 'text.secondary' }}>{client.time}</Typography>
+                    </Box>
+                    <Link href="#" sx={{ color: '#24B8D2' }}>Ver</Link>
+                  </Box>
+                  {index < 2 && <Divider />}
+                </React.Fragment>
+              ))}
+              
+              <Link href="#" sx={{ display: 'block', mt: 2, color: '#24B8D2' }}>
+                Ver todos los clientes
+              </Link>
+            </Card>
+
+            {/* Sección Proyectos Recientes */}
+            <Card sx={{ flex: 1, minWidth: 300 }}>
+              <Typography level="h4" sx={{ mb: 2 }}>
+                Proyectos Recientes
+              </Typography>
+              <Typography level="body-sm" sx={{ mb: 2, color: 'text.secondary' }}>
+                Últimos proyectos actualizados
+              </Typography>
+              
+              {[
+                { name: 'Empresa tecnologica S.A.', desc: 'Proyecto 100% estratégico', time: 'Hace 2 días' },
+                { name: 'Consultoria Innovación', desc: 'Proyecto 100% estratégico', time: 'Hace 3 días' },
+                { name: 'LizardTech', desc: 'Proyecto 100% estratégico', time: 'Hace 5 días' },
+              ].map((project, index) => (
+                <React.Fragment key={index}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: 1 }}>
+                    <Box>
+                      <Typography level="body-md">{project.name}</Typography>
+                      <Typography level="body-sm" sx={{ color: 'text.secondary' }}>{project.desc}</Typography>
+                      <Typography level="body-sm" sx={{ color: 'text.secondary' }}>{project.time}</Typography>
+                    </Box>
+                    <Link href="#" sx={{ color: '#24B8D2' }}>Ver</Link>
+                  </Box>
+                  {index < 2 && <Divider />}
+                </React.Fragment>
+              ))}
+              
+              <Link href="#" sx={{ display: 'block', mt: 2, color: '#24B8D2' }}>
+                Ver todos los proyectos
+              </Link>
+            </Card>
           </Box>
-          <OrderTable />
-          <OrderList />
         </Box>
       </Box>
     </CssVarsProvider>
