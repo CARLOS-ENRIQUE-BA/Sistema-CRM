@@ -118,7 +118,7 @@ export default function CampaignPage() {
             sx={{
               display: 'flex',
               gap: 2,
-              backgroundColor: '#FFFFFF',
+              backgroundColor: 'var(--joy-palette-background-surface)',
               borderRadius: '12px',
               boxShadow: 'sm',
               overflow: 'hidden',
@@ -130,23 +130,20 @@ export default function CampaignPage() {
             <Box
               sx={{
                 width: '350px',
-                borderRight: '1px solid #E0E0E0',
+                borderRight: '1px solid var(--joy-palette-divider)',
                 display: 'flex',
                 flexDirection: 'column',
                 minHeight: 0,
+                backgroundColor: 'var(--joy-palette-background-surface)',
               }}
             >
-              <Box sx={{ p: 2, borderBottom: '1px solid #E0E0E0' }}>
+              <Box sx={{ p: 2, borderBottom: '1px solid var(--joy-palette-divider)' }}>
                 <Button
                   startDecorator={<AddIcon />}
                   onClick={() => setOpenModal(true)}
+                  color="primary"
                   sx={{
-                    backgroundColor: '#24B8D2',
-                    color: 'white',
                     width: '100%',
-                    '&:hover': {
-                      backgroundColor: '#1A91B8',
-                    },
                   }}
                 >
                   Nueva Campaña
@@ -165,11 +162,11 @@ export default function CampaignPage() {
                     backgroundColor: 'transparent',
                   },
                   '&::-webkit-scrollbar-thumb': {
-                    backgroundColor: '#BFC0C1',
+                    backgroundColor: 'var(--joy-palette-neutral-outlinedBorder)',
                     borderRadius: '4px',
                   },
                   '&::-webkit-scrollbar-thumb:hover': {
-                    backgroundColor: '#A5A6A7',
+                    backgroundColor: 'var(--joy-palette-neutral-outlinedHoverBorder)',
                   },
                 }}
               >
@@ -177,7 +174,7 @@ export default function CampaignPage() {
                 <Box sx={{ p: 2 }}>
                   <Typography
                     level="title-lg"
-                    sx={{ color: '#213A62', mb: 2, fontWeight: 'bold' }}
+                    sx={{ mb: 2, fontWeight: 'bold' }}
                   >
                     Mis Campañas
                   </Typography>
@@ -189,20 +186,22 @@ export default function CampaignPage() {
                             borderRadius: '8px',
                             mb: 1,
                             '&:hover': {
-                              backgroundColor: 'rgba(36, 184, 210, 0.08)',
+                              backgroundColor: 'var(--joy-palette-primary-softHoverBg)',
                             },
-                            backgroundColor: selectedChat === group.name ? 'rgba(36, 184, 210, 0.12)' : 'transparent',
+                            backgroundColor: selectedChat === group.name 
+                              ? 'var(--joy-palette-primary-softBg)'
+                              : 'transparent',
                           }}
                           onClick={() => setSelectedChat(group.name)}
                         >
                           <ListItemContent>
-                            <Typography level="title-sm" sx={{ color: '#213A62', fontWeight: 'bold' }}>
+                            <Typography level="title-sm" sx={{ fontWeight: 'bold' }}>
                               {group.name}
                             </Typography>
-                            <Typography level="body-sm" sx={{ color: '#666666' }}>
+                            <Typography level="body-sm">
                               {group.description}
                             </Typography>
-                            <Typography level="body-xs" sx={{ color: '#666666' }}>
+                            <Typography level="body-xs">
                               {group.members}
                             </Typography>
                           </ListItemContent>
@@ -218,7 +217,7 @@ export default function CampaignPage() {
                 <Box sx={{ p: 2 }}>
                   <Typography
                     level="title-lg"
-                    sx={{ color: '#213A62', mb: 2, fontWeight: 'bold' }}
+                    sx={{ mb: 2, fontWeight: 'bold' }}
                   >
                     Campañas a las que pertenezco
                   </Typography>
@@ -230,21 +229,21 @@ export default function CampaignPage() {
                             borderRadius: '8px',
                             mb: 1,
                             '&:hover': {
-                              backgroundColor: 'rgba(36, 184, 210, 0.08)',
+                              backgroundColor: 'var(--joy-palette-primary-softHoverBg)',
                             },
                           }}
                         >
                           <ListItemContent>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                              <Typography level="title-sm" sx={{ color: '#213A62', fontWeight: 'bold' }}>
+                              <Typography level="title-sm" sx={{ fontWeight: 'bold' }}>
                                 {channel.name}
                                 {channel.isOfficial && (
                                   <Typography
                                     component="span"
                                     sx={{
                                       ml: 1,
-                                      backgroundColor: '#24B8D2',
-                                      color: 'white',
+                                      backgroundColor: 'var(--joy-palette-primary-softBg)',
+                                      color: 'var(--joy-palette-primary-plainColor)',
                                       px: 1,
                                       py: 0.5,
                                       borderRadius: '4px',
@@ -256,10 +255,10 @@ export default function CampaignPage() {
                                 )}
                               </Typography>
                             </Box>
-                            <Typography level="body-sm" sx={{ color: '#666666' }}>
+                            <Typography level="body-sm">
                               {channel.description}
                             </Typography>
-                            <Typography level="body-xs" sx={{ color: '#666666' }}>
+                            <Typography level="body-xs">
                               {channel.followers}
                             </Typography>
                           </ListItemContent>
@@ -277,7 +276,7 @@ export default function CampaignPage() {
                 flex: 1,
                 display: 'flex',
                 flexDirection: 'column',
-                backgroundColor: '#F0F2F5',
+                backgroundColor: 'var(--joy-palette-background-level1)',
               }}
             >
               {selectedChat === 'Equipo de Marketing' ? (
@@ -286,8 +285,8 @@ export default function CampaignPage() {
                   <Box
                     sx={{
                       p: 2,
-                      backgroundColor: '#FFFFFF',
-                      borderBottom: '1px solid #E0E0E0',
+                      backgroundColor: 'var(--joy-palette-background-surface)',
+                      borderBottom: '1px solid var(--joy-palette-divider)',
                       display: 'flex',
                       alignItems: 'center',
                       gap: 2,
@@ -295,10 +294,10 @@ export default function CampaignPage() {
                   >
                     <Avatar>M</Avatar>
                     <Box>
-                      <Typography level="title-lg" sx={{ color: '#213A62' }}>
+                      <Typography level="title-lg">
                         Equipo de Marketing
                       </Typography>
-                      <Typography level="body-sm" sx={{ color: '#666666' }}>
+                      <Typography level="body-sm">
                         12 miembros
                       </Typography>
                     </Box>
@@ -330,21 +329,21 @@ export default function CampaignPage() {
                         <Avatar size="sm">{message.avatar}</Avatar>
                         <Box
                           sx={{
-                            backgroundColor: '#FFFFFF',
+                            backgroundColor: 'var(--joy-palette-background-surface)',
                             p: 1.5,
                             borderRadius: '12px',
                             maxWidth: '80%',
                           }}
                         >
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
-                            <Typography level="title-sm" sx={{ color: '#213A62', fontWeight: 'bold' }}>
+                            <Typography level="title-sm">
                               {message.sender}
                             </Typography>
-                            <Typography level="body-xs" sx={{ color: '#666666' }}>
+                            <Typography level="body-xs">
                               {message.time}
                             </Typography>
                           </Box>
-                          <Typography level="body-sm" sx={{ color: '#213A62' }}>
+                          <Typography level="body-sm">
                             {message.message}
                           </Typography>
                         </Box>
@@ -356,8 +355,8 @@ export default function CampaignPage() {
                   <Box
                     sx={{
                       p: 2,
-                      backgroundColor: '#FFFFFF',
-                      borderTop: '1px solid #E0E0E0',
+                      backgroundColor: 'var(--joy-palette-background-surface)',
+                      borderTop: '1px solid var(--joy-palette-divider)',
                       display: 'flex',
                       gap: 1,
                     }}
@@ -366,7 +365,10 @@ export default function CampaignPage() {
                       placeholder="Escribe un mensaje..."
                       sx={{ flex: 1 }}
                       endDecorator={
-                        <IconButton variant="plain" sx={{ color: '#24B8D2' }}>
+                        <IconButton 
+                          variant="plain" 
+                          sx={{ color: 'var(--joy-palette-primary-plainColor)' }}
+                        >
                           <SendIcon />
                         </IconButton>
                       }
@@ -375,7 +377,7 @@ export default function CampaignPage() {
                 </>
               ) : (
                 <Box sx={{ p: 3, textAlign: 'center' }}>
-                  <Typography level="body-lg" sx={{ color: '#666666' }}>
+                  <Typography level="body-lg">
                     Selecciona un canal o grupo para ver los mensajes
                   </Typography>
                 </Box>

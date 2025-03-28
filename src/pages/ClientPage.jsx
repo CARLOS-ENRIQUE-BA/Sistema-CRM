@@ -83,7 +83,7 @@ export default function ClientPage() {
             }}
           >
             <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flex: 1 }}>
-              <FilterListIcon sx={{ color: '#24B8D2' }} />
+              <FilterListIcon sx={{ color: 'var(--joy-palette-primary-plainColor)' }} />
               <Select
                 size="sm"
                 placeholder="Filtrar por..."
@@ -91,7 +91,7 @@ export default function ClientPage() {
                 onChange={(_, value) => setFilterBy(value)}
                 sx={{
                   minWidth: 160,
-                  '--Select-decoratorColor': '#24B8D2',
+                  '--Select-decoratorColor': 'var(--joy-palette-primary-plainColor)',
                 }}
               >
                 <Option value="nombre">Nombre</Option>
@@ -108,8 +108,8 @@ export default function ClientPage() {
               sx={{
                 flexGrow: 1,
                 maxWidth: 400,
-                '--Input-decoratorColor': '#24B8D2',
-                '--Input-focusedHighlight': '#24B8D2',
+                '--Input-decoratorColor': 'var(--joy-palette-primary-plainColor)',
+                '--Input-focusedHighlight': 'var(--joy-palette-primary-500)',
               }}
             />
           </Box>
@@ -122,7 +122,7 @@ export default function ClientPage() {
               overflow: 'auto',
               '& table': {
                 '--Table-headerUnderlineThickness': '1px',
-                '--Table-headerUnderlineColor': '#24B8D2',
+                '--Table-headerUnderlineColor': 'var(--joy-palette-primary-500)',
               },
             }}
           >
@@ -130,7 +130,7 @@ export default function ClientPage() {
               stickyHeader
               hoverRow
               sx={{
-                '--TableCell-headBackground': '#f7f7f7',
+                '--TableCell-headBackground': 'var(--joy-palette-background-level1)',
                 '--TableCell-selectedBackground': 'rgba(36, 184, 210, 0.1)',
               }}
             >
@@ -156,8 +156,12 @@ export default function ClientPage() {
                     <td style={{ padding: '12px 16px' }}>
                       <Box
                         sx={{
-                          backgroundColor: client.estado === 'Activo' ? '#e8f5e9' : '#ffebee',
-                          color: client.estado === 'Activo' ? '#2e7d32' : '#c62828',
+                          backgroundColor: client.estado === 'Activo' 
+                            ? 'var(--joy-palette-success-softBg)'
+                            : 'var(--joy-palette-danger-softBg)',
+                          color: client.estado === 'Activo'
+                            ? 'var(--joy-palette-success-plainColor)'
+                            : 'var(--joy-palette-danger-plainColor)',
                           padding: '4px 8px',
                           borderRadius: '4px',
                           display: 'inline-block',
@@ -172,7 +176,12 @@ export default function ClientPage() {
                         size="sm"
                         variant="plain"
                         color="primary"
-                        sx={{ color: '#24B8D2' }}
+                        sx={{ 
+                          color: 'var(--joy-palette-primary-plainColor)',
+                          '&:hover': {
+                            backgroundColor: 'var(--joy-palette-primary-softBg)',
+                          }
+                        }}
                       >
                         Ver
                       </Button>
